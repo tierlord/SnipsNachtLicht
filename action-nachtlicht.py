@@ -44,7 +44,7 @@ def nachtlicht(hermes, message):
     request = message.slots.minuten.first().value
     anAus = message.slots.anAus.first().value
 
-    if anAus == "an":
+    if "an" in anAus:
         set_led([255,210,200])
         if (request):
             if(int(request) == 1):
