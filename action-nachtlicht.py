@@ -2,6 +2,7 @@
 from hermes_python.hermes import Hermes
 import apa102
 import time
+from threading import Thread
 
 led = apa102.APA102(num_led=3)
 
@@ -75,7 +76,8 @@ def nachtlicht(hermes, message):
             fade_slow(request)
         else:
             hermes.publish_end_session(message.session_id, "Okay")
-            fade_in()
+            t = Thread(target=fade_in)
+            t.start()
     else:
         hermes.publish_end_session(message.session_id, "Okay")
         fade_fast()
