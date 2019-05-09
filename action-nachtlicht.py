@@ -11,6 +11,7 @@ def set_led(color):
     led.show()
 
 def fade_in():
+    time.sleep(1)
     r = 100
     g = 75
     b = 55
@@ -76,11 +77,11 @@ def nachtlicht(hermes, message):
                 hermes.publish_end_session(message.session_id, "Nacht licht für " + str(request) + " Minuten an.")
             fade_slow(request)
         else:
-            hermes.publish_end_session(message.session_id, "Okay")
+            hermes.publish_end_session(message.session_id, "")
             t = Thread(target=fade_in)
             t.start()
     else:
-        hermes.publish_end_session(message.session_id, "Okay")
+        hermes.publish_end_session(message.session_id, "")
         fade_fast()
 
 
