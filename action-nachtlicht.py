@@ -24,6 +24,7 @@ def fade_in():
 
 
 def fade_slow(mins):
+    fade_in()
     print("Fading slowly")
     start_time = time.time()
     secs = mins * 60
@@ -75,14 +76,16 @@ def nachtlicht(hermes, message):
                 hermes.publish_end_session(message.session_id, "Nacht licht für eine Minute an.")
             else:
                 hermes.publish_end_session(message.session_id, "Nacht licht für " + str(request) + " Minuten an.")
-            fade_slow(request)
+            t = Thread(target=fade_slow, args=request,)
+            t.start()
         else:
             hermes.publish_end_session(message.session_id, "")
             t = Thread(target=fade_in)
             t.start()
     else:
         hermes.publish_end_session(message.session_id, "")
-        fade_fast()
+        t = Thread(target=fade_fast)
+        t.start()
 
 
 with Hermes("localhost:1883") as h:
