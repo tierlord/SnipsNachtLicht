@@ -61,7 +61,7 @@ def nachtlicht_callback(hermes, message):
     anAus = "an"
 
     client = mqtt.Client()
-    client.connect(MQTT_ADDR)
+    client.connect(MQTT_ADDR, 1883, 20)
 
     if message.slots.minuten:
         request = message.slots.minuten.first().value
@@ -81,6 +81,7 @@ def nachtlicht_callback(hermes, message):
     else:
         client.publish("snips/led/aus")
         hermes.publish_end_session(message.session_id, "")
+    client.disconnect()
 
 with Hermes("localhost:1883") as h:
     h \
