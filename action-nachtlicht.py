@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 from hermes_python.hermes import Hermes
-import apa102
 import time
 from threading import Thread
 
@@ -58,10 +57,13 @@ def fade_fast():
             b -= 1
         time.sleep(0.04)
 
-def nachtlicht(hermes, message):
+def nachtlicht_callback(hermes, message):
     request = 0
     anAus = "an"
 
+    hermes.publish_end_session(message.session_id, "lol, du opfer.")
+
+    import apa102
     if message.slots.minuten:
         request = message.slots.minuten.first().value
     if message.slots.anAus:
@@ -86,4 +88,6 @@ def nachtlicht(hermes, message):
 
 
 with Hermes("localhost:1883") as h:
-    h.subscribe_intent("tierlord:Nachtlicht", nachtlicht).start()
+    h \
+        .subscribe_intent("tierlord:Nachtlicht", nachtlicht_callback) \
+        .start()
