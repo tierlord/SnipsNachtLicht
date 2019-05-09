@@ -53,7 +53,7 @@ def nachtlicht(hermes, message):
             if(int(request) == 1):
                 hermes.publish_end_session("Nachtlicht für eine Minute an.")
             else:
-                hermes.publish_end_session("Nachtlicht für " + request + " Minuten an.")
+                hermes.publish_end_session("Nachtlicht für " + str(request) + " Minuten an.")
             fade_slow(int(request))
         else:
             hermes.publish_end_session()
