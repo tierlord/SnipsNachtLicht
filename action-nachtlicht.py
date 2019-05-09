@@ -2,6 +2,7 @@
 from hermes_python.hermes import Hermes
 import time
 from threading import Thread
+import apa102
 
 led = apa102.APA102(num_led=3)
 
@@ -63,7 +64,6 @@ def nachtlicht_callback(hermes, message):
 
     hermes.publish_end_session(message.session_id, "lol, du opfer.")
 
-    import apa102
     if message.slots.minuten:
         request = message.slots.minuten.first().value
     if message.slots.anAus:
