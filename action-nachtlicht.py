@@ -47,12 +47,17 @@ def fade_fast():
     print("Ended fading")
 
 def nachtlicht(hermes, message):
-    request = message.slots.minuten.first().value
-    anAus = message.slots.anAus.first().value
+    request = 0
+    anAus = "an"
 
-    if not anAus or ("an" in anAus or "ein" in anAus):
+    if message.slots.minuten:
+        request = message.slots.minuten.first().value
+    if message.slots.anAus:
+        anAus = message.slots.anAus.first().value
+
+    if "an" in anAus or "ein" in anAus:
         set_led([255,230,210])
-        if (request):
+        if (request > 0):
             if(request == 1):
                 hermes.publish_end_session(message.session_id, "Nacht licht für eine Minute an.")
             else:
