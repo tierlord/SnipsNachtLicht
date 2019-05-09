@@ -9,6 +9,17 @@ def set_led(color):
     led.set_pixel(0, color[0], color[1], color[2])
     led.show()
 
+def fade_in():
+    r = 100
+    g = 75
+    b = 55
+    while r<255:
+        r += 1
+        g += 1
+        b += 1
+        time.sleep(0.02)
+
+
 def fade_slow(mins):
     print("Fading slowly")
     start_time = time.time()
@@ -56,7 +67,6 @@ def nachtlicht(hermes, message):
         anAus = message.slots.anAus.first().value
 
     if "an" in anAus or "ein" in anAus:
-        set_led([255,230,210])
         if (request > 0):
             if(request == 1):
                 hermes.publish_end_session(message.session_id, "Nacht licht für eine Minute an.")
@@ -65,6 +75,7 @@ def nachtlicht(hermes, message):
             fade_slow(request)
         else:
             hermes.publish_end_session(message.session_id, "Okay")
+            fade_in()
     else:
         hermes.publish_end_session(message.session_id, "Okay")
         fade_fast()
