@@ -89,5 +89,5 @@ def nachtlicht_callback(hermes, message):
 
 with Hermes("localhost:1883") as h:
     h \
-        .subscribe_intent("tierlord:Nachtlicht", nachtlicht_callback) \
+        .subscribe_intent("tierlord:NachtlichtAnAus", nachtlicht_callback) \
         .start()
