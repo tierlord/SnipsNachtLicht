@@ -11,7 +11,7 @@ def set_led(color):
     led.show()
 
 def fade_in():
-    time.sleep(2)
+    time.sleep(1)
     r = 100
     g = 75
     b = 55
@@ -24,7 +24,7 @@ def fade_in():
 
 
 def fade_slow(mins):
-    time.sleep(2)
+    time.sleep(1)
     fade_in()
     start_time = time.time()
     secs = mins * 60
@@ -44,7 +44,7 @@ def fade_slow(mins):
             time.sleep(0.115)
 
 def fade_fast():
-    time.sleep(2)
+    time.sleep(0.5)
     r = 255
     g = 230
     b = 210
