@@ -11,7 +11,7 @@ def set_led(color):
 
 def fade_slow(mins):
     start_time = time.time()
-    secs = min * 60
+    secs = mins * 60
     r = 255
     g = 210
     b = 200
