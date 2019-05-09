@@ -11,7 +11,7 @@ def set_led(color):
     led.show()
 
 def fade_in():
-    time.sleep(1)
+    time.sleep(2)
     r = 100
     g = 75
     b = 55
@@ -24,6 +24,7 @@ def fade_in():
 
 
 def fade_slow(mins):
+    time.sleep(4)
     fade_in()
     print("Fading slowly")
     start_time = time.time()
@@ -45,6 +46,7 @@ def fade_slow(mins):
     print("Ended fading")
 
 def fade_fast():
+    time.sleep(2)
     print("Fading fast")
     r = 255
     g = 230
@@ -57,7 +59,7 @@ def fade_fast():
             g -= 1
         if b > 0:
             b -= 1
-        time.sleep(0.02)
+        time.sleep(0.04)
     print("Ended fading")
 
 def nachtlicht(hermes, message):
