@@ -76,7 +76,7 @@ def nachtlicht(hermes, message):
                 hermes.publish_end_session(message.session_id, "Nacht licht für eine Minute an.")
             else:
                 hermes.publish_end_session(message.session_id, "Nacht licht für " + str(request) + " Minuten an.")
-            t = Thread(target=fade_slow, args=request,)
+            t = Thread(target=fade_slow, args=(request,))
             t.start()
         else:
             hermes.publish_end_session(message.session_id, "")
