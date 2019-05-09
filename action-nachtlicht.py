@@ -24,9 +24,8 @@ def fade_in():
 
 
 def fade_slow(mins):
-    time.sleep(4)
+    time.sleep(2)
     fade_in()
-    print("Fading slowly")
     start_time = time.time()
     secs = mins * 60
     r = 255
@@ -43,11 +42,9 @@ def fade_slow(mins):
             if b > 0:
                 b -= 1
             time.sleep(0.115)
-    print("Ended fading")
 
 def fade_fast():
     time.sleep(2)
-    print("Fading fast")
     r = 255
     g = 230
     b = 210
@@ -60,7 +57,6 @@ def fade_fast():
         if b > 0:
             b -= 1
         time.sleep(0.04)
-    print("Ended fading")
 
 def nachtlicht(hermes, message):
     request = 0
