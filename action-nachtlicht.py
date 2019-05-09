@@ -15,6 +15,7 @@ def fade_in():
     g = 75
     b = 55
     while r<255:
+        set_led([r,g,b])
         r += 1
         g += 1
         b += 1
