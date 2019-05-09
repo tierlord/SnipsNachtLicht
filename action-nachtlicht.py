@@ -24,7 +24,7 @@ def fade_in():
 
 
 def fade_slow(mins):
-    time.sleep(1)
+    time.sleep(2)
     fade_in()
     start_time = time.time()
     secs = mins * 60
@@ -86,6 +86,4 @@ def nachtlicht(hermes, message):
 
 
 with Hermes("localhost:1883") as h:
-    h \
-        .subscribe_intent("tierlord:Nachtlicht", nachtlicht) \
-        .start()
+    h.subscribe_intent("tierlord:Nachtlicht", nachtlicht).start()
