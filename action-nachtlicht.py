@@ -64,9 +64,9 @@ def nachtlicht(hermes, message):
                 hermes.publish_end_session(message.session_id, "Nacht licht für " + str(request) + " Minuten an.")
             fade_slow(request)
         else:
-            hermes.publish_end_session(message.session_id)
+            hermes.publish_end_session(message.session_id, "Okay")
     else:
-        hermes.publish_end_session(message.session_id)
+        hermes.publish_end_session(message.session_id, "Okay")
         fade_fast()
 
 
