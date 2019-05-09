@@ -33,11 +33,10 @@ def fade_slow(mins):
     b = 210
     while r>0:
         set_led([r,g,b])
-        if time.time() - start_time > (secs - 30):
+        if time.time() - start_time < (secs - 30):
             time.sleep(1)
         else:
-            if r > 0:
-                r -= 1
+            r -= 1
             if g > 0:
                 g -= 1
             if b > 0:
