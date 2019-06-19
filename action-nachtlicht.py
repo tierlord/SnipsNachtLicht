@@ -21,7 +21,7 @@ def nachtlicht_callback(hermes, message):
             if(request == 1):
                 hermes.publish_end_session(message.session_id, "Nacht licht für eine Minute an.")
             else:
-                hermes.publish_end_session(message.session_id, "Nacht licht für " + str(request) + " Minuten an.")
+                hermes.publish_end_session(message.session_id, "Nacht licht für " + str((int)request) + " Minuten an.")
             client.publish("snips/led/an", payload=request)
         else:
             client.publish("snips/led/an")
